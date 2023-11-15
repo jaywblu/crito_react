@@ -738,6 +738,7 @@ button {
         gap: 30px;
         .grid-box {
             transition: background-color 0.2s ease-in-out;
+            display: inline-block;
             h3 {
                 border-bottom: 2px solid var(--color-light-grey);
                 padding-bottom: 16px;

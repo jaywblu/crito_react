@@ -1,5 +1,6 @@
 import React from 'react'
 import MainNav from './MainNav'
+import { Link } from 'react-router-dom'
 
 import img_Logotype from '../assets/images/logotype.svg'
 import img_IconPhone from '../assets/images/icon-phone.svg'
@@ -12,9 +13,9 @@ const Header = () => {
         <div className="container">
             <div className="row">
                 <div id="headerLogo" className="col sm-3 md-3 lg-2 xl-2">
-                    <a href="index.html">
+                    <Link to="/" end>
                         <img src={img_Logotype} alt="Crito Agency logotype" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="col sm-9 md-9 lg-10 xl-10">
                     <div className="row">

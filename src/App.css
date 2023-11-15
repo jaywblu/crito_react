@@ -703,6 +703,7 @@ button.btn-round .btn-outside-text span {
 }
 #caseStudies #caseStudiesContent .grid-box {
   transition: background-color 0.2s ease-in-out;
+  display: inline-block;
 }
 #caseStudies #caseStudiesContent .grid-box h3 {
   border-bottom: 2px solid var(--color-light-grey);

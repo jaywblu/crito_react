@@ -1,13 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const MainNav = () => {
   return (
     <nav id="mainNav">
         <ul>
-            <li><a className="active" href="index.html"><span>Home</span></a></li>
-            <li><a href="service.html"><span>Service</span></a></li>
-            <li><a href="news.html"><span>News</span></a></li>
-            <li><a href="contact.html"><span>Contact</span></a></li>
+            <li><NavLink to="/" end><span>Home</span></NavLink></li>
+            <li><NavLink to="/services" end><span>Services</span></NavLink></li>
+            <li><NavLink to="/news"><span>News</span></NavLink></li>
+            <li><NavLink to="/contact" end><span>Contact</span></NavLink></li>
         </ul>
     </nav>
   )
