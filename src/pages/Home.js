@@ -14,22 +14,19 @@ import SubcribeSection from '../components/SubcribeSection'
 
 const Home = () => {
   return (
-    <>
-      {/* <Header></Header> */}
-      <main>
-          <ShowcaseSection></ShowcaseSection>
-          <PartnersSection></PartnersSection>
-          <FeaturesSection></FeaturesSection>
-          <AboutSection></AboutSection>
-          <ServicesSection></ServicesSection>
-          <WhyChooseUsSection></WhyChooseUsSection>
-          <CaseStudiesSection></CaseStudiesSection>
-          <MeetOurTeamSection></MeetOurTeamSection>
-          <TestimonialsSection></TestimonialsSection>
-          <NewsSection></NewsSection>
-          <SubcribeSection></SubcribeSection>
-      </main>
-    </>
+    <main>
+        <ShowcaseSection></ShowcaseSection>
+        <PartnersSection></PartnersSection>
+        <FeaturesSection></FeaturesSection>
+        <AboutSection></AboutSection>
+        <ServicesSection></ServicesSection>
+        <WhyChooseUsSection></WhyChooseUsSection>
+        <CaseStudiesSection></CaseStudiesSection>
+        <MeetOurTeamSection></MeetOurTeamSection>
+        <TestimonialsSection></TestimonialsSection>
+        <NewsSection></NewsSection>
+        <SubcribeSection></SubcribeSection>
+    </main>
   )
 }
 
