@@ -5,6 +5,7 @@ import img_CaseStudies_02 from "../assets/images/case-studies-img-2.png"
 import img_CaseStudies_03 from "../assets/images/case-studies-img-3.png"
 import img_CaseStudies_04 from "../assets/images/case-studies-img-4.png"
 import CaseStudyComponent from './CaseStudyComponent'
+import ButtonLink from '../utils/ButtonLink'
 
 const caseStudies = [
     {
@@ -44,7 +45,7 @@ const CaseStudiesSection = () => {
             }
         </div>
         <div id="caseStudiesFooter">
-            <button type="button" className="btn btn-dark">All Recent Projects<i className="icon link-icon-white"></i></button>
+            <ButtonLink color="dark" text="All Recent Projects" url="/projects"></ButtonLink>
         </div>
     </section>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import img_AboutImage from '../assets/images/about-image.jpg'
+import ButtonLink from '../utils/ButtonLink'
 
 const AboutSection = () => {
   return (
@@ -22,7 +23,7 @@ const AboutSection = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam officiis quas assumenda esse obcaecati? Ex esse error voluptates iure vel totam eos.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis esse quasi incidunt adipisci accusantium libero provident voluptate amet.</p>
                 <div className="button-row">
-                    <button type="button" className="btn btn-dark">Learn More<i className="icon link-icon-white"></i></button>
+                    <ButtonLink color="dark" text="Learn More" url="/about"></ButtonLink>
                     <button type="button" className="btn btn-round"><i className="fa-solid fa-play"></i><div className="btn-outside-text"><span>Intro Video</span></div></button>
                 </div>                        
             </div>

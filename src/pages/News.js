@@ -1,28 +1,64 @@
 import React, { useEffect, useState } from 'react'
 import NewsArticleComponent from '../components/NewsArticleComponent'
+import SubcribeSection from '../components/SubcribeSection'
+import PageTitleSection from '../components/PageTitleSection'
+import { useNewsArticles } from '../NewsArticlesContext'
 
 const News = () => {
-    const [news, setNews] = useState([])
+    const { getAllArticles, articles } = useNewsArticles()
+    const [page, setPage] = useState(1)
+    const articleAmount = 6
     useEffect(() => {
-        const getNewArticles = () => {
-            fetch("https://win23-assignment.azurewebsites.net/api/articles")
-                .then(response => response.json())
-                .then(json => setNews(json))
-                .catch(error => console.log(error))
-        }
-        const interval = setInterval(() => {
-            getNewArticles()
-        }, 60000)
-        getNewArticles()
-        return () => clearInterval(interval)
+        console.log(articles)
+        getAllArticles()
     }, [])
-    
 
+    const filterArticlesByPage = (index) => {
+        console.log(page)
+        const maxIndex = (page*articleAmount)
+        return (index >= maxIndex-articleAmount && index < maxIndex)
+    }
+
+    const getPages = () => {
+        let list = []
+        let noOfPages = Math.ceil(articles.length/articleAmount)
+        for (let i = 0; i < noOfPages; i++) {
+            list.push(<li key={i}>{i+1}</li>)
+        }
+        return list
+    }
+
+    const goToPage = (pageNumber) => {
+        setPage(() => {
+            return pageNumber
+        })
+    }
+
+    const prevPage = () => {
+        setPage(() => {
+            if (page > 1) {
+                return page-1
+            }
+            return page
+        })
+    }
+
+    const nextPage = () => {
+        setPage(() => {
+            if (page < Math.ceil(articles.length/articleAmount)) {
+                return page+1
+            }
+            return page
+        })
+    }
+    
     return (
         <main>
-            <section id="articlesNews" className="container margin-top-large margin-btm-large">
+            <PageTitleSection title="News & Articles" pageName="News"></PageTitleSection>
+            <section id="articlesNews" className="container padding-top-large padding-btm-large">
+                <h2>Our News & Articles</h2>
                 <div className="grid-wrapper">
-                    {news.length > 0 ? news.map(article => (
+                    {articles.length > 0 ? articles.filter((item, index) => filterArticlesByPage(index)).map(article => (
                             <NewsArticleComponent 
                                 key={article.id} 
                                 id={article.id} 
@@ -36,8 +72,16 @@ const News = () => {
                         ))
                         : 'Loading news...'
                     }
-                </div>   
+                </div>
             </section>
+            <div className='paginator'>
+                <ul>
+                    <li><button onClick={prevPage}>Prev</button></li>
+                    {getPages()}
+                    <li><button onClick={nextPage}>Next</button></li>
+                </ul>
+            </div>
+            <SubcribeSection></SubcribeSection>
         </main>
     )
 }

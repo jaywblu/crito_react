@@ -1,98 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import * as ApiHandler from '../ApiHandler'
 
-import img_NewsArticle_01 from "../assets/images/articles-img-1.png"
-import img_NewsArticle_02 from "../assets/images/articles-img-2.png"
-import img_NewsArticle_03 from "../assets/images/articles-img-3.png"
+import NewsArticleComponent from './NewsArticleComponent'
+import ButtonLink from '../utils/ButtonLink'
 
-const NewsSection = () => {
-  return (
-    <section id="articlesNews" className="container margin-top-large margin-btm-large">
-        <div className="row header-button-split">
-            <div className="col">
-                <span className="section-title">Articles & News</span>
-                <h2>Get Every Single Article & News</h2>
+const NewsSection = ({sectionClasses}) => {
+    const [news, setNews] = useState([])
+    useEffect(() => {
+        const getNews = (amount) => (ApiHandler.getArticlesByAmount(amount).then(response => setNews(response)).catch(error => console.log(error)))
+        getNews(3)
+    }, [])
+
+    return (
+        <section id="articlesNews" className={sectionClasses}>
+            <div className="row header-button-split">
+                <div className="col">
+                    <span className="section-title">Articles & News</span>
+                    <h2>Get Every Single Article & News</h2>
+                </div>
+                <div className="col">
+                    <ButtonLink color="transparent" text="Browse Articles" url="/news"></ButtonLink>
+                </div>
             </div>
-            <div className="col">
-                <button type="button" className="btn">Browse Articles<i className="icon link-icon"></i></button>
+            <div className="grid-wrapper">
+                {
+                    news.length > 0 ? news.map(article => (
+                            <NewsArticleComponent 
+                                key={article.id} 
+                                id={article.id} 
+                                title={article.title} 
+                                content={article.content} 
+                                author={article.author} 
+                                published={article.published} 
+                                category={article.category} 
+                                imageUrl={article.imageUrl}>
+                            </NewsArticleComponent>
+                        )
+                    )
+                    : "Loading news..."
+                }
             </div>
-        </div>
-        <div className="grid-wrapper">
-            <div className="article-card grid-box">
-                <a href="#">
-                    <div className="article-image">
-                    <img src={img_NewsArticle_01} alt="A smiling woman sitting at a table" />
-                    <div className="article-date">
-                        <h3>24</h3>
-                        <p>Mar</p>
-                    </div>
-                    </div>
-                    <div className="article-category">
-                        Business
-                    </div>
-                    <div className="article-description">
-                        <h3>
-                            How To Use Digitalization In The Classroom
-                        </h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.
-                        </p>
-                    </div>
-                </a>
+            <div className="pagination">
+                <div className="page-item active-page"></div>
+                <div className="page-item"></div>
+                <div className="page-item"></div>
+                <div className="page-item"></div>
+                <div className="page-item"></div>
             </div>
-            <div className="article-card grid-box">
-                <a href="#">
-                    <div className="article-image">
-                        <img src={img_NewsArticle_02} alt="A computer screen showing information about AI software" />
-                        <div className="article-date">
-                            <h3>17</h3>
-                            <p>Mar</p>
-                        </div>
-                    </div>
-                    <div className="article-category">
-                        Business
-                    </div>
-                    <div className="article-description">
-                        <h3>
-                            How To Implement Chat GPT In Your Projects
-                        </h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.
-                        </p>
-                    </div>
-                </a>
-            </div>
-            <div className="article-card grid-box">
-                <a href="">
-                    <div className="article-image">
-                        <img src={img_NewsArticle_03} alt="Litterature about programming" />
-                        <div className="article-date">
-                            <h3>13</h3>
-                            <p>Mar</p>
-                        </div>
-                    </div>
-                    <div className="article-category">
-                        Business
-                    </div>
-                    <div className="article-description">
-                        <h3>
-                            The Guide To Support Modern CSS Design
-                        </h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto sed hic libero.
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div className="pagination">
-            <div className="page-item active-page"></div>
-            <div className="page-item"></div>
-            <div className="page-item"></div>
-            <div className="page-item"></div>
-            <div className="page-item"></div>
-        </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default NewsSection

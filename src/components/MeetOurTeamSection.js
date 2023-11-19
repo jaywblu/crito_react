@@ -5,6 +5,7 @@ import img_Team_02 from "../assets/images/team-img-2.png"
 import img_Team_03 from "../assets/images/team-img-3.png"
 import img_Team_04 from "../assets/images/team-img-4.png"
 import TeamMemberComponent from './TeamMemberComponent'
+import ButtonLink from '../utils/ButtonLink'
 
 const teamMembers = [
     {
@@ -38,7 +39,7 @@ const MeetOurTeamSection = () => {
                 <h2>Experience Team Members</h2>
             </div>
             <div className="col">
-                <button type="button" className="btn btn-primary">Browse Team<i className="icon link-icon"></i></button>
+                <ButtonLink color="primary" text="Browse Team" url="/team"></ButtonLink>
             </div>
         </div>
         <div className="grid-wrapper">

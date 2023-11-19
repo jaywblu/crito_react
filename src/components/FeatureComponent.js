@@ -1,14 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const FeatureComponent = ({imgUrl, title, desc, linkUrl}) => {
   return (
-    <a href={linkUrl}>
+    <Link to={linkUrl}>
         <div className="grid-box">
           <img src={imgUrl} />
           <h3>{title}</h3>
           <p>{desc}</p>
         </div>
-    </a>
+    </Link>
   )
 }
 

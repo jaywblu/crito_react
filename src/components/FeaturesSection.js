@@ -5,6 +5,7 @@ import img_BusinessAdvice from '../assets/images/business-advice.svg'
 import img_StartupBusiness from '../assets/images/startup-business.svg'
 import img_FinancialAdvice from '../assets/images/financial-advice.svg'
 import img_RiskManagement from '../assets/images/risk-management.svg'
+import ButtonLink from '../utils/ButtonLink'
 
 const featuresList = [
     {imgUrl: img_BusinessAdvice, title: "Business Advice", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", linkUrl: "/services/business-advice"},
@@ -23,7 +24,7 @@ const FeaturesSection = () => {
                     <h2>Our accounting is
                         trusted by thousands
                         of companies</h2>
-                    <button type="button" className="btn btn-primary btn-wide">Learn More<i className="icon link-icon"></i></button>
+                    <ButtonLink color="primary" text="Learn More" url="/features"></ButtonLink>
                 </div>
                 <div id="featuresGrid" className="grid-box">
                     <div className="grid-wrapper">

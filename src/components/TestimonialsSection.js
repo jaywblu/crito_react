@@ -4,6 +4,7 @@ import img_Testimonial_01 from "../assets/images/testimonial-img-1.png"
 import img_Testimonial_02 from "../assets/images/testimonial-img-2.png"
 import img_Testimonial_03 from "../assets/images/testimonial-img-3.png"
 import TestimonialComponent from './TestimonialComponent'
+import ButtonLink from '../utils/ButtonLink'
 
 const testimonials = [
     {
@@ -52,7 +53,7 @@ const TestimonialsSection = () => {
                 }
             </div>
             <div id="testimonialsFooter">
-                <button type="button" className="btn btn-dark">All Reviews<i className="icon link-icon-white"></i></button>
+                <ButtonLink color="dark" text="All Reviews" url="/testimonials"></ButtonLink>
             </div>
         </div>
     </section>

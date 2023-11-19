@@ -1,5 +1,6 @@
 import React from 'react'
 import ServiceComponent from './ServiceComponent'
+import ButtonLink from '../utils/ButtonLink'
 
 const servicesList = [
     {title: "Business Advice", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", linkUrl: "/services/business-advice"},
@@ -21,7 +22,7 @@ const ServicesSection = () => {
             }
         </div>
         <div className="button-row">
-            <button type="button" className="btn btn-secondary">Browse Services<i className="icon link-icon"></i></button>
+            <ButtonLink color="secondary" text="Browse Services" url="/services"></ButtonLink>
         </div>
     </section>
   )

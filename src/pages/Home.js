@@ -24,7 +24,7 @@ const Home = () => {
         <CaseStudiesSection></CaseStudiesSection>
         <MeetOurTeamSection></MeetOurTeamSection>
         <TestimonialsSection></TestimonialsSection>
-        <NewsSection></NewsSection>
+        <NewsSection sectionClasses={"container margin-top-large margin-btm-large"}></NewsSection>
         <SubcribeSection></SubcribeSection>
     </main>
   )

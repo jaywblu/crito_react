@@ -3,9 +3,11 @@ import Header from '../components/Header'
  
 const PageNotFound = () => {
     return (
-        <>
-            <main>404 - Page Not Found</main>
-        </>
+        <main>
+            <section className='container padding-top-large padding-btm-large'>
+                <h1 style={{"text-align": "center"}}>404 - Page Not Found</h1>
+            </section>
+        </main>
     )
 }
 

@@ -9,6 +9,7 @@
   --color-tertiary: #0E1021;
   --color-dark-text: #191919;
   --color-light-grey: #DAD9D3;
+  --color-lighter-grey: #f3f3f3;
   --color-light-grey-tr: rgba(218, 217, 211, 0.2);
   --color-dark-grey: #2C2C2C;
   --color-highlight: #F94D1C;
@@ -32,7 +33,7 @@ html, body {
   font-weight: 400;
   color: var(--color-dark-text);
   background-color: rgb(216, 216, 216);
-  min-width: 360px;
+  min-width: 460px;
 }
 
 header, main, footer {
@@ -102,15 +103,22 @@ textarea.form-control {
   border: none;
   border-radius: 32px;
 }
+input.form-control.color-grey,
+textarea.form-control.color-grey {
+  background-color: var(--color-lighter-grey);
+}
 
-button {
+button,
+a[role=button] {
   font-size: 1rem;
   color: var(--color-dark-text);
 }
-button:hover {
+button:hover,
+a[role=button]:hover {
   cursor: pointer;
 }
-button.btn {
+button.btn,
+a[role=button].btn {
   background-color: transparent;
   padding: 16px 32px;
   border: 1px solid var(--color-dark-text);
@@ -120,58 +128,87 @@ button.btn {
   justify-content: center;
   line-height: 0;
 }
-button.btn i {
+button.btn i,
+a[role=button].btn i {
   margin-left: 0.75em;
   width: 0.75em;
   height: 0.75em;
   line-height: 0.75rem;
 }
-button.btn:hover {
+button.btn:not(:disabled):hover,
+a[role=button].btn:not(:disabled):hover {
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 0 3px 2px rgba(249, 77, 28, 0.6705882353);
 }
-button.btn:focus, button.btn:active {
+button.btn:not(:disabled):focus, button.btn:not(:disabled):active,
+a[role=button].btn:not(:disabled):focus,
+a[role=button].btn:not(:disabled):active {
   box-shadow: 0 0 3px 2px rgba(249, 77, 28, 0.6705882353);
   border: 1px solid var(--color-highlight) !important;
   outline: 0;
 }
-button.btn-primary {
+button.btn-primary,
+a[role=button].btn-primary {
   background-color: var(--color-primary);
   border: 1px solid var(--color-primary);
 }
-button.btn-primary:hover {
+button.btn-primary:not(:disabled):hover,
+a[role=button].btn-primary:not(:disabled):hover {
   background-color: #fff0cb;
 }
-button.btn-secondary {
+button.btn-primary:disabled,
+a[role=button].btn-primary:disabled {
+  color: #c2c2c2;
+  background-color: #efe5cd;
+  border: 1px solid #efe5cd;
+}
+button.btn-primary:disabled i,
+a[role=button].btn-primary:disabled i {
+  display: none;
+}
+button.btn-secondary,
+a[role=button].btn-secondary {
   background-color: var(--color-secondary);
 }
-button.btn-secondary:hover {
+button.btn-secondary:hover,
+a[role=button].btn-secondary:hover {
   background-color: #fefcf2;
 }
-button.btn-dark {
+button.btn-dark,
+a[role=button].btn-dark {
   background-color: var(--color-dark-text);
   color: #fff;
 }
-button.btn-dark:hover {
+button.btn-dark:hover,
+a[role=button].btn-dark:hover {
   background-color: #505050;
 }
-button.btn-wide {
+button.btn-wide,
+a[role=button].btn-wide {
   width: 100%;
 }
-button.btn-round {
+button.btn-round,
+a[role=button].btn-round {
   padding: 16px;
   background-color: transparent;
 }
-button.btn-round i {
+button.btn-round i,
+a[role=button].btn-round i {
   margin: 0;
 }
-button.btn-round .btn-outside-text {
+button.btn-round .btn-outside-text,
+a[role=button].btn-round .btn-outside-text {
   position: relative;
 }
-button.btn-round .btn-outside-text span {
+button.btn-round .btn-outside-text span,
+a[role=button].btn-round .btn-outside-text span {
   position: absolute;
   top: -0.25em;
   right: -112px;
+}
+
+.error-text {
+  color: #e83c00;
 }
 
 .container {
@@ -530,7 +567,7 @@ button.btn-round .btn-outside-text span {
   font-size: 1.25rem;
   padding: 1.25rem 0 2.5rem 0;
 }
-#showcase button:nth-of-type(1) {
+#showcase .btn:nth-of-type(1) {
   margin-right: 16px;
 }
 #showcase .col {
@@ -547,6 +584,9 @@ button.btn-round .btn-outside-text span {
   flex: 0;
 }
 
+#features .btn {
+  width: 100%;
+}
 #features .grid-wrapper {
   grid-template-columns: auto;
   grid-template-rows: auto auto;
@@ -799,6 +839,9 @@ button.btn-round .btn-outside-text span {
   grid-area: footer;
 }
 
+#articlesNews.bg-secondary {
+  background: var(--color-secondary);
+}
 #articlesNews .grid-wrapper {
   grid-auto-columns: auto;
   gap: 30px;
@@ -812,10 +855,15 @@ button.btn-round .btn-outside-text span {
 }
 #articlesNews .article-card .article-image {
   position: relative;
+  max-height: 280px;
+  overflow: hidden;
 }
 #articlesNews .article-card .article-image img {
   position: relative;
   z-index: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
 }
 #articlesNews .article-card .article-image .article-date {
   background-color: var(--color-primary);
@@ -920,10 +968,87 @@ button.btn-round .btn-outside-text span {
 #contactForm form button {
   margin-top: 24px;
 }
+#contactForm form .error-text {
+  text-align: right;
+  margin-bottom: 12px;
+}
+#contactForm form .submited-form-text {
+  text-align: center;
+  font-size: 1.5rem;
+}
 
 #contactMap iframe {
   width: 100%;
   height: 620px;
+}
+
+#newsArticleDetails .grid-wrapper {
+  grid-template-columns: 1fr;
+  gap: 142px;
+}
+#newsArticleDetails span.article-info-dot {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background-color: var(--color-primary);
+  margin: 0 32px 6px;
+}
+#newsArticleDetails #articleImage {
+  margin-bottom: 48px;
+}
+#newsArticleDetails #articleImage img {
+  max-width: 100%;
+}
+#newsArticleDetails #recentPosts,
+#newsArticleDetails #newsCategoriesSummary {
+  margin-top: 42px;
+  padding: 48px 42px;
+  border: 1px solid var(--color-light-grey);
+}
+#newsArticleDetails #recentPosts h3::after,
+#newsArticleDetails #newsCategoriesSummary h3::after {
+  content: "";
+  height: 1px;
+  width: 40px;
+  margin-top: -2px;
+  display: block;
+  background-color: var(--color-dark-text);
+}
+#newsArticleDetails #recentPosts ul li,
+#newsArticleDetails #newsCategoriesSummary ul li {
+  margin-bottom: 16px;
+}
+#newsArticleDetails #recentPosts ul li span,
+#newsArticleDetails #newsCategoriesSummary ul li span {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.75rem;
+}
+#newsArticleDetails #recentPosts ul li {
+  padding-bottom: 12px;
+}
+#newsArticleDetails #recentPosts ul li:not(:last-child) {
+  border-bottom: 1px solid var(--color-light-grey);
+}
+#newsArticleDetails #newsCategories {
+  margin-top: 42px;
+}
+#newsArticleDetails #newsCategories ul {
+  display: flex;
+}
+#newsArticleDetails #newsCategories ul li {
+  text-align: center;
+  background-color: var(--color-lighter-grey);
+  padding: 12px;
+  border-radius: 24px;
+  min-width: 80px;
+}
+#newsArticleDetails #newsCategories ul li a {
+  display: block;
+}
+#newsArticleDetails #newsCategories ul li:not(:nth-child(1)) {
+  margin-left: 12px;
 }
 
 #footerMain {
@@ -1137,18 +1262,13 @@ button.btn-round .btn-outside-text span {
     grid-template-columns: 1fr 1fr;
   }
   #articlesNews .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
     margin: 0;
     transform: none;
     width: auto;
   }
   #articlesNews .article-card {
-    padding-bottom: 30px;
-  }
-  #articlesNews .article-card .article-image {
-    float: left;
-  }
-  #articlesNews .article-card .article-image img {
-    max-width: 90%;
+    border: none !important;
   }
   #contactCards .row {
     flex-direction: row;
@@ -1157,6 +1277,10 @@ button.btn-round .btn-outside-text span {
   #contactCards .row .col {
     padding: 40px 60px;
     flex: 0 0 calc(33.33% - 64px);
+  }
+  #newsArticleDetails .grid-wrapper {
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
   }
   #footerMain .grid-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -1366,6 +1490,9 @@ button.btn-round .btn-outside-text span {
   #contactCards .row .col {
     flex-grow: 1;
   }
+  #newsArticleDetails .grid-wrapper {
+    gap: 142px;
+  }
   #footerMain {
     margin-bottom: 78px;
   }
@@ -1471,15 +1598,8 @@ button.btn-round .btn-outside-text span {
   #articlesNews .grid-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
-  #articlesNews .article-card {
-    border: none !important;
-    padding-bottom: 0;
-  }
   #articlesNews .article-card .article-image {
-    float: none;
-  }
-  #articlesNews .article-card .article-image img {
-    max-width: 100%;
+    max-height: 280px;
   }
   #subscribe {
     background: var(--color-secondary) url(assets/images/grey-wavy.svg) right bottom 60px no-repeat;
